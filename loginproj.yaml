@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: loginproj
+  namespace: argocd
+
+spec:
+  description: Login API Project
+
+  sourceRepos:
+    - https://github.com/AbhayVel/argocdproject.git
+
+  destinations:
+    - namespace: loginapi
+      server: https://kubernetes.default.svc
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
